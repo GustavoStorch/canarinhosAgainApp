@@ -33,3 +33,6 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+    - assets/canarinhoagain/images/logo_canarinho.png
+    - assets/canarinhoagain/images/wallpaper_canarinho.jpg

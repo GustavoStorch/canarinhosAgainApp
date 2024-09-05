@@ -1,6 +1,6 @@
 // ignore_for_file: constant_identifier_names
 import 'package:canarinho_again_app/rounting/app_route_path.dart';
-import 'package:canarinho_again_app/utils/app_environment.dart';
+import 'package:canarinho_again_app/app_environment.dart';
 import 'package:flutter/material.dart';
 
 // App

@@ -1,6 +1,7 @@
 import 'package:canarinho_again_app/rounting/app_route_path.dart';
-import 'package:canarinho_again_app/utils/app_const.dart';
-import 'package:canarinho_again_app/utils/app_environment.dart';
+import 'package:canarinho_again_app/app_const.dart';
+import 'package:canarinho_again_app/app_environment.dart';
+import 'package:canarinho_again_app/utils/controllers/default_controller.dart';
 
 class AppController extends DefaultController {
   AppController();

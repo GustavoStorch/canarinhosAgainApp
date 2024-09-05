@@ -19,17 +19,17 @@ class AppEnvironment {
     switch (environment) {
       case Environment.official:
         _environment = environment;
-        _API = "10.0.0.35:90";
+        _API = "localhost:5001";
         break;
 
       case Environment.development:
         _environment = environment;
-        _API = "localhost:51671";
+        _API = "localhost:5001";
         break;
 
       case Environment.test:
         _environment = environment;
-        _API = "localhost:65463";
+        _API = "localhost:5001";
         break;
 
       default:

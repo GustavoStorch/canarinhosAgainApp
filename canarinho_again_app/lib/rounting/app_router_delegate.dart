@@ -1,6 +1,8 @@
+import 'package:canarinho_again_app/controllers/app_controller.dart';
+import 'package:canarinho_again_app/pages/login_page.dart';
 import 'package:canarinho_again_app/rounting/app_route_path.dart';
-import 'package:canarinho_again_app/utils/app_const.dart';
-import 'package:canarinho_again_app/utils/app_provider.dart';
+import 'package:canarinho_again_app/app_const.dart';
+import 'package:canarinho_again_app/app_provider.dart';
 import 'package:flutter/material.dart';
 
 class AppRouterDelegate extends RouterDelegate<AppRoutePath>
@@ -43,11 +45,11 @@ class AppRouterDelegate extends RouterDelegate<AppRoutePath>
     return Navigator(
       key: navigatorKey,
       pages: [
-        // if (controller.route == AppRoute.login)
-        //   const MaterialPage(
-        //     key: ValueKey("LoginPage"),
-        //     child: LoginPage(),
-        //   ),
+        if (controller.route == AppRoute.login)
+          const MaterialPage(
+            key: ValueKey("LoginPage"),
+            child: LoginPage(),
+          ),
         // if (controller.route == AppRoute.menu)
         //   const MaterialPage(
         //     key: ValueKey("MenuPage"),
