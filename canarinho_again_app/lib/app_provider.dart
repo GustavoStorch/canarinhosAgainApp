@@ -2,6 +2,7 @@
 
 import 'package:canarinho_again_app/app_controls.dart';
 import 'package:canarinho_again_app/controllers/app_controller.dart';
+import 'package:canarinho_again_app/controllers/default_controllers/acesso_controller.dart';
 import 'package:canarinho_again_app/controllers/page_controllers/login_page_controller.dart';
 import 'package:canarinho_again_app/rounting/app_route_information_parser.dart';
 import 'package:canarinho_again_app/rounting/app_router_delegate.dart';
@@ -32,7 +33,7 @@ class AppProvider extends StatelessWidget {
         // Default Controllers
         // ChangeNotifierProvider(create: (_) => PesquisaDataController()),
 
-        // ChangeNotifierProvider(create: (_) => AcessoController()),
+        ChangeNotifierProvider(create: (_) => AcessoController()),
 
         // ChangeNotifierProvider(
         //     create: (_) => InspecaoLimpezaConsultarController()),
@@ -72,7 +73,7 @@ void resetAllProviders() {
   resetDataProviders();
 
   AppControl.reset();
-  // AcessoControl.reset();
+  AcessoControl.reset();
 
   mostrandoSnackbar = false;
 }

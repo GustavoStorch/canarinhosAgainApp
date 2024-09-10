@@ -1,5 +1,6 @@
 import 'package:canarinho_again_app/controllers/app_controller.dart';
 import 'package:canarinho_again_app/pages/login_page.dart';
+import 'package:canarinho_again_app/pages/menu_page.dart';
 import 'package:canarinho_again_app/rounting/app_route_path.dart';
 import 'package:canarinho_again_app/app_const.dart';
 import 'package:canarinho_again_app/app_provider.dart';
@@ -50,11 +51,11 @@ class AppRouterDelegate extends RouterDelegate<AppRoutePath>
             key: ValueKey("LoginPage"),
             child: LoginPage(),
           ),
-        // if (controller.route == AppRoute.menu)
-        //   const MaterialPage(
-        //     key: ValueKey("MenuPage"),
-        //     child: MenuPage(),
-        //   ),
+        if (controller.route == AppRoute.menu)
+          const MaterialPage(
+            key: ValueKey("MenuPage"),
+            child: MenuPage(),
+          ),
         // if (controller.route == AppRoute.error404)
         //   const MaterialPage(
         //     key: ValueKey("Error404Page"),

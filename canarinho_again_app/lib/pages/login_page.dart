@@ -2,11 +2,12 @@
 // import 'package:flutter/foundation.dart';
 import 'package:canarinho_again_app/app_const.dart';
 import 'package:canarinho_again_app/app_controls.dart';
-// import 'package:canarinho_again_app/app_injections.dart';
+import 'package:canarinho_again_app/app_injections.dart';
 import 'package:canarinho_again_app/controllers/page_controllers/login_page_controller.dart';
-// import 'package:canarinho_again_app/models/exception/bad_request_exception.dart';
-// import 'package:canarinho_again_app/rounting/app_route_path.dart';
-// import 'package:canarinho_again_app/utils/app/app_error.dart';
+import 'package:canarinho_again_app/models/exception/bad_request_exception.dart';
+import 'package:canarinho_again_app/repositories/autenticacao/autenticacao_repository.dart';
+import 'package:canarinho_again_app/rounting/app_route_path.dart';
+import 'package:canarinho_again_app/utils/app/app_error.dart';
 import 'package:canarinho_again_app/utils/pages/page_background.dart';
 import 'package:canarinho_again_app/utils/pages/page_button.dart';
 import 'package:canarinho_again_app/utils/pages/page_const.dart';
@@ -150,26 +151,24 @@ class LoginPage extends StatelessWidget {
 
     AppControl.awaitingResponse();
 
-    // app
-    //     .get<AutenticacaoRepository>()
-    //     .check(LoginPageControl.usuario, LoginPageControl.senha)
-    //     .then((ok) {
-    //   AcessoControl.defineAutenticacao(ok);
+    app
+        .get<AutenticacaoRepository>()
+        .check(LoginPageControl.usuario, LoginPageControl.senha)
+        .then((ok) {
+      AcessoControl.defineAutenticacao(ok);
 
-    //   verificarAcessos();
+      AppControl.defineRoute(AppRoute.menu);
+    }).catchError((err) {
+      if (err is BadRequestException) {
+        final dynamic error = err.error["error"];
+        if (error == "WrongUsernameOrPassword" ||
+            error == "UsernameValidator") {
+          MensagemAlerta("Usuário ou senha inválidos!", COLOR_RED, 2);
+          return;
+        }
+      }
 
-    //   AppControl.defineRoute(AppRoute.menu);
-    // }).catchError((err) {
-    //   if (err is BadRequestException) {
-    //     final dynamic error = err.error["error"];
-    //     if (error == "WrongUsernameOrPassword" ||
-    //         error == "UsernameValidator") {
-    //       MensagemAlerta("Usuário ou senha inválidos!", COLOR_RED, 2);
-    //       return;
-    //     }
-    //   }
-
-    //   SendError(ErrorType.LOGIN_ERROR, err, "", false);
-    // }).whenComplete(() => AppControl.removeAwaitResponse());
+      SendError(ErrorType.LOGIN_ERROR, err, "", false);
+    }).whenComplete(() => AppControl.removeAwaitResponse());
   }
 }
