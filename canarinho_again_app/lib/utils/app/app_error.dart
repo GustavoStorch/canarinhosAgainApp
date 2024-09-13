@@ -10,13 +10,15 @@ enum ErrorType {
   // SETUP_MOLDE_INSPECAO_STATUS_ATUALIZAR,
   // SETUP_MOLDE_OF_NAO_APLICA,
   LOGIN_ERROR,
-  
+  USUARIO_SALVAR
 }
 
 String getMessageByError(ErrorType type) {
   switch (type) {
     case ErrorType.LOGIN_ERROR:
       return "Ocorreu um erro ao tentar efetuar o login.";
+    case ErrorType.USUARIO_SALVAR:
+      return "Ocorreu um erro ao tentar salvar o usuário";
     default:
       return "";
   }

@@ -1,4 +1,9 @@
 import 'package:canarinho_again_app/controllers/app_controller.dart';
+import 'package:canarinho_again_app/pages/configuracoes/configuracoes_page.dart';
+import 'package:canarinho_again_app/pages/configuracoes/usuario/adicionar_usuario_page.dart';
+import 'package:canarinho_again_app/pages/configuracoes/usuario/modificar_usuario_page.dart';
+import 'package:canarinho_again_app/pages/configuracoes/usuario/usuario_page.dart';
+import 'package:canarinho_again_app/pages/error404_page.dart';
 import 'package:canarinho_again_app/pages/login_page.dart';
 import 'package:canarinho_again_app/pages/menu_page.dart';
 import 'package:canarinho_again_app/rounting/app_route_path.dart';
@@ -56,25 +61,35 @@ class AppRouterDelegate extends RouterDelegate<AppRoutePath>
             key: ValueKey("MenuPage"),
             child: MenuPage(),
           ),
-        // if (controller.route == AppRoute.error404)
-        //   const MaterialPage(
-        //     key: ValueKey("Error404Page"),
-        //     child: Error404Page(barHeight: false),
-        //   ),
+        if (controller.route == AppRoute.error404)
+          const MaterialPage(
+            key: ValueKey("Error404Page"),
+            child: Error404Page(barHeight: false),
+          ),
 
-        // // Configurações
-        // if (controller.route == AppRoute.config)
-        //   const MaterialPage(
-        //     key: ValueKey("ConfigPage"),
-        //     child: ConfigPage(),
-        //   ),
+        // Configurações
+        if (controller.route == AppRoute.config)
+          const MaterialPage(
+            key: ValueKey("ConfigPage"),
+            child: ConfigPage(),
+          ),
 
-        // // Configurações -> Área
-        // if (controller.route == AppRoute.config_area_inspecao)
-        //   const MaterialPage(
-        //     key: ValueKey("ConfigAreaInspecaoPage"),
-        //     child: ConfigAreaInspecaoPage(),
-        //   ),
+        // Configurações -> Usuário
+        if (controller.route == AppRoute.config_usuario)
+          const MaterialPage(
+            key: ValueKey("ConfigUsuarioPage"),
+            child: ConfigUsuarioPage(),
+          ),
+           if (controller.route == AppRoute.config_usuario_adicionar)
+          const MaterialPage(
+            key: ValueKey("ConfigAdicionarUsuarioPage"),
+            child: ConfigAdicionarUsuarioPage(),
+          ),
+          if (controller.route == AppRoute.config_usuario_modificar)
+          const MaterialPage(
+            key: ValueKey("ConfigModificarUsuarioPage"),
+            child: ConfigModificarUsuarioPage(),
+          ),
       ],
       onPopPage: (route, result) => route.didPop(result),
     );

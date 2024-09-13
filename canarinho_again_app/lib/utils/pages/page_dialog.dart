@@ -37,6 +37,7 @@ class DefaultDialog extends StatelessWidget {
           children: [
             DefaultButton(
               margin: const EdgeInsets.only(right: 8),
+              width: 112,
               child: const Text("CANCELAR", style: STYLE_FEFEFE_F12),
               onPressed: () => Navigator.pop(context),
             ),

@@ -9,7 +9,7 @@ class PageSearch extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: CARD_WIDTH,
-      padding: const EdgeInsets.all(0),
+      padding: const EdgeInsets.all(12),
       child: const Card(
         margin: EdgeInsets.symmetric(vertical: 12),
         elevation: PAGE_ELEVATION,

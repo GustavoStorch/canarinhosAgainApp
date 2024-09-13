@@ -20,6 +20,9 @@ enum AppRoute {
   error404,
   // Configurações
   config,
+  
   // Configurações -> Usuários
-  consulta_usuarios,
+  config_usuario,
+  config_usuario_adicionar,
+  config_usuario_modificar,
 }

@@ -32,7 +32,7 @@ Widget PageAddButton(VoidCallback onPressed) {
   return Center(
     child: DefaultButton(
       margin: const EdgeInsets.only(right: 12),
-      width: 96,
+      width: 112,
       color: COLOR_GREEN,
       onPressed: onPressed,
       child: const Text("ADICIONAR", style: STYLE_FEFEFE_F12),

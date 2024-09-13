@@ -2,7 +2,10 @@
 
 import 'package:canarinho_again_app/app_provider.dart';
 import 'package:canarinho_again_app/controllers/app_controller.dart';
+import 'package:canarinho_again_app/controllers/data_controllers/pesquisa_data_controller.dart';
+import 'package:canarinho_again_app/controllers/data_controllers/usuario/usuario_data_controller.dart';
 import 'package:canarinho_again_app/controllers/default_controllers/acesso_controller.dart';
+import 'package:canarinho_again_app/controllers/default_controllers/configuracao/config_usuario_controller.dart';
 import 'package:canarinho_again_app/controllers/page_controllers/login_page_controller.dart';
 import 'package:flutter/material.dart';
 
@@ -15,3 +18,12 @@ final AcessoControl = Provider.of<AcessoController>(context, listen: false);
 
 final LoginPageControl =
     Provider.of<LoginPageController>(context, listen: false);
+
+final ConfigUsuarioControl =
+    Provider.of<ConfigUsuarioController>(context, listen: false);
+
+    // DATA CONTROLLERS
+final PesquisaDataControl =
+    Provider.of<PesquisaDataController>(context, listen: false);
+
+final UsuarioDataControl = Provider.of<UsuarioDataController>(context, listen: false);

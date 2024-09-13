@@ -16,7 +16,7 @@ Visibility PageMenuButton({
       child: SizedBox(
           width: CARD_WIDTH,
           child: Card(
-            margin: EdgeInsets.fromLTRB(0, 12, 0, lastButton ? 12 : 0),
+            margin: EdgeInsets.fromLTRB(10, 12, 10, lastButton ? 12 : 0),
             elevation: PAGE_ELEVATION,
             color: COLOR_FEFEFE,
             child: ListTile(

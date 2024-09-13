@@ -5,19 +5,19 @@ part 'usuario.g.dart';
 @JsonSerializable()
 class Usuario {
   @JsonKey(name: 'codUsuario')
-  final int codUsuario;
+  int codUsuario;
 
   @JsonKey(name: 'usuario')
-  final String usuario;
+  String usuario;
 
   @JsonKey(name: 'nome')
-  final String nome;
+  String nome;
 
   @JsonKey(name: 'senha')
-  final String senha;
+  String senha;
 
   @JsonKey(name: 'isAdministrador')
-  final bool isAdministrador;
+  bool isAdministrador;
 
   Usuario(
     this.codUsuario,
@@ -27,7 +27,7 @@ class Usuario {
     this.isAdministrador,
   );
 
-  factory Usuario.fromJson(Map<String, dynamic> json) => _$UsuarioFromJson(json);
+   factory Usuario.fromJson(Map<String, dynamic> json) => _$UsuarioFromJson(json);
 
   Map<String, dynamic> toJson() => _$UsuarioToJson(this);
 }

@@ -24,14 +24,6 @@ class AcessoController extends DefaultController {
     if (sendNotify) notify();
   }
 
-  bool _supervisor = false;
-
-  /// Define o acesso como supervisor.
-  void defineSupervisor(bool value, [bool sendNotify = true]) {
-    _supervisor = value;
-    if (sendNotify) notify();
-  }
-
   bool _manutencao = false;
 
   /// Define o acesso como manutenção.
@@ -49,13 +41,12 @@ class AcessoController extends DefaultController {
 
   bool get isConfig => username == "conf";
   bool get isUsuario => isConfig || _acesso == Acesso.usuario;
-  bool get isSupervisor => isConfig || _supervisor;
+  bool get isAdministrador => isConfig || _autenticacao.usuario.isAdministrador;
   bool get isManutencao => isConfig || _manutencao;
 
   @override
   void reset() {
     _acesso = Acesso.usuario;
-    _supervisor = false;
     _manutencao = false;
   }
 }
