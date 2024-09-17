@@ -42,7 +42,7 @@ class ConfigModificarUsuarioPage extends StatelessWidget {
                 elevation: PAGE_ELEVATION,
                 child: Container(
                   width: CARD_WIDTH,
-                  height: 390,
+                  height: 260,
                   decoration: BOX_DECORATION,
                   child: ReactiveForm(
                     formGroup: ConfigUsuarioControl.form,
@@ -202,7 +202,7 @@ class ConfigModificarUsuarioPage extends StatelessWidget {
 
     app
         .get<UsuarioRepository>()
-        .update(usuario.codUsuario, usuario)
+        .create(usuario)
         .then((usuario) {
           MensagemSucesso(
               "A modificação do usuário foi salva com sucesso!");

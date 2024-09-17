@@ -38,6 +38,12 @@ class MenuPage extends StatelessWidget {
                 );
               },
             ),
+            PageMenuButton(
+              title: "Consultas",
+              onTap: () => AppControl.defineRoute(AppRoute.consultas),
+              trailing: const Icon(Icons.search_rounded,
+                  color: COLOR_00528C, size: 25),
+            ),
             
             const Padding(padding: EdgeInsets.only(bottom: 36))
           ],

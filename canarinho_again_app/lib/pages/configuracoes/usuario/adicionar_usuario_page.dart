@@ -38,7 +38,7 @@ class ConfigAdicionarUsuarioPage extends StatelessWidget {
                 elevation: PAGE_ELEVATION,
                 child: Container(
                   width: CARD_WIDTH,
-                  height: 390,
+                  height: 330,
                   decoration: BOX_DECORATION,
                   child: ReactiveForm(
                     formGroup: ConfigUsuarioControl.form,

@@ -3,6 +3,8 @@ import 'package:canarinho_again_app/pages/configuracoes/configuracoes_page.dart'
 import 'package:canarinho_again_app/pages/configuracoes/usuario/adicionar_usuario_page.dart';
 import 'package:canarinho_again_app/pages/configuracoes/usuario/modificar_usuario_page.dart';
 import 'package:canarinho_again_app/pages/configuracoes/usuario/usuario_page.dart';
+import 'package:canarinho_again_app/pages/consultas/consulta_passagem/consulta_passagem_page.dart';
+import 'package:canarinho_again_app/pages/consultas/consultas_page.dart';
 import 'package:canarinho_again_app/pages/error404_page.dart';
 import 'package:canarinho_again_app/pages/login_page.dart';
 import 'package:canarinho_again_app/pages/menu_page.dart';
@@ -89,6 +91,18 @@ class AppRouterDelegate extends RouterDelegate<AppRoutePath>
           const MaterialPage(
             key: ValueKey("ConfigModificarUsuarioPage"),
             child: ConfigModificarUsuarioPage(),
+          ),
+
+        // Consultas -> Passagem
+        if (controller.route == AppRoute.consultas)
+          const MaterialPage(
+            key: ValueKey("ConsultasPage"),
+            child: ConsultasPage(),
+          ),
+        if (controller.route == AppRoute.consulta_passagem)
+          const MaterialPage(
+            key: ValueKey("ConsultaPassagemPage"),
+            child: ConsultaPassagemPage(),
           ),
       ],
       onPopPage: (route, result) => route.didPop(result),

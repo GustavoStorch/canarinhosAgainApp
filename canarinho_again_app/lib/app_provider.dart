@@ -2,10 +2,12 @@
 
 import 'package:canarinho_again_app/app_controls.dart';
 import 'package:canarinho_again_app/controllers/app_controller.dart';
+import 'package:canarinho_again_app/controllers/data_controllers/consulta_passagem/consulta_passagem_data_controller.dart';
 import 'package:canarinho_again_app/controllers/data_controllers/pesquisa_data_controller.dart';
 import 'package:canarinho_again_app/controllers/data_controllers/usuario/usuario_data_controller.dart';
 import 'package:canarinho_again_app/controllers/default_controllers/acesso_controller.dart';
 import 'package:canarinho_again_app/controllers/default_controllers/configuracao/config_usuario_controller.dart';
+import 'package:canarinho_again_app/controllers/default_controllers/consulta_passagem/consulta_passagem_controller.dart';
 import 'package:canarinho_again_app/controllers/page_controllers/login_page_controller.dart';
 import 'package:canarinho_again_app/rounting/app_route_information_parser.dart';
 import 'package:canarinho_again_app/rounting/app_router_delegate.dart';
@@ -39,6 +41,10 @@ class AppProvider extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => UsuarioDataController()),
 
         ChangeNotifierProvider(create: (_) => ConfigUsuarioController()),
+
+        ChangeNotifierProvider(create: (_) => ConsultaPassagemDataController()),
+
+        ChangeNotifierProvider(create: (_) => ConsultaPassagemController()),
 
         ChangeNotifierProvider(create: (_) => AcessoController()),
 
@@ -92,5 +98,7 @@ void resetDataProviders() {
   LoginPageControl.reset();
   UsuarioDataControl.reset();
   PesquisaDataControl.reset();
-    ConfigUsuarioControl.reset();
+  ConfigUsuarioControl.reset();
+  ConsultaPassagemControl.reset();
+  ConsultaPassagemDataControl.reset();
 }

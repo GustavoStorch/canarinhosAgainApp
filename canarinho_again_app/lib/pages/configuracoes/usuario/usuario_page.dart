@@ -129,7 +129,7 @@ class ConfigUsuarioPage extends StatelessWidget {
                                                     color: COLOR_RED,
                                                     onPressed: () async {
                                                       ConfigUsuarioControl.defineByUsuario(usuarioModel);
-                                                      await _deletarAreaDialog(context);
+                                                      await _deletarAreaDialog(context, usuarioModel);
                                                     },
                                                     child: const Text("DELETAR", style: STYLE_FEFEFE_F12),
                                                   ),
@@ -160,7 +160,7 @@ class ConfigUsuarioPage extends StatelessWidget {
     );
   }
 
-  Future<Widget?> _deletarAreaDialog(BuildContext context) async {
+  Future<Widget?> _deletarAreaDialog(BuildContext context, Usuario usuario) async {
     return showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -170,13 +170,34 @@ class ConfigUsuarioPage extends StatelessWidget {
           button: "DELETAR",
           width: 96,
           color: COLOR_RED,
-          onPressed: () => _atualizarUsuarioAsync("DELETADO"),
+          onPressed: () => _atualizarUsuarioAsync(usuario),
         );
       },
     );
   }
 
-  void _atualizarUsuarioAsync([String situacao = ""]) {
+  // void _atualizarUsuarioAsync([String situacao = ""]) {
+  //   if (AppControl.awaitResponse) {
+  //     MensagemInfo(AWAIT_MESSAGE);
+  //     return;
+  //   }
+
+  //   AppControl.awaitingResponse();
+
+  //   final Usuario usuarioModel = ConfigUsuarioControl.getUsuario();
+
+  //   app
+  //       .get<UsuarioRepository>()
+  //       .delete(usuarioModel)
+  //       .then((usuario) {
+  //         _atualizarUsuarioMenu(usuarioModel);
+  //         MensagemSucesso("A Usuário foi deletado com sucesso!");
+  //       })
+  //       .catchError((err) => SendError(ErrorType.USUARIO_SALVAR, err, " (Código: ${usuarioModel.codUsuario})"))
+  //       .whenComplete(() => AppControl.removeAwaitResponse());
+  // }
+
+  Future<void> _atualizarUsuarioAsync(Usuario usuarioModel) async {
     if (AppControl.awaitResponse) {
       MensagemInfo(AWAIT_MESSAGE);
       return;
@@ -184,17 +205,15 @@ class ConfigUsuarioPage extends StatelessWidget {
 
     AppControl.awaitingResponse();
 
-    final Usuario usuarioModel = ConfigUsuarioControl.getUsuario();
-
-    app
-        .get<UsuarioRepository>()
-        .delete(usuarioModel)
-        .then((usuario) {
-          _atualizarUsuarioMenu(usuarioModel);
-          MensagemSucesso("A Usuário foi deletado com sucesso!");
-        })
-        .catchError((err) => SendError(ErrorType.USUARIO_SALVAR, err, " (Código: ${usuarioModel.codUsuario})"))
-        .whenComplete(() => AppControl.removeAwaitResponse());
+    try {
+      await app.get<UsuarioRepository>().delete(usuarioModel);
+      _atualizarUsuarioMenu(usuarioModel);
+      MensagemSucesso("O Usuário foi deletado com sucesso!");
+    } catch (err) {
+      SendError(ErrorType.USUARIO_SALVAR, err, " (Código: ${usuarioModel.codUsuario})");
+    } finally {
+      AppControl.removeAwaitResponse();
+    }
   }
 
   void _atualizarUsuarioMenu(Usuario usuarioModel) {

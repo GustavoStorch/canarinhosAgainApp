@@ -25,4 +25,8 @@ enum AppRoute {
   config_usuario,
   config_usuario_adicionar,
   config_usuario_modificar,
+
+  // Consultas -> Passagens
+  consultas,
+  consulta_passagem,
 }
