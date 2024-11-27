@@ -10,6 +10,7 @@ class ConsultaPassagemController extends DefaultController {
     "quantidade": [0],
     "dataHora": [""],
     "linhaOnibus": [""],
+    "ehEntrada": [false]
   });
 
   /// Retorna o formulário.
@@ -61,17 +62,29 @@ class ConsultaPassagemController extends DefaultController {
     if (sendNotify) notify();
   }
 
+  /// Retorna o controle da se é entrada.
+  AbstractControl get ehEntradaontrol => _form.control("ehEntrada");
+
+  /// Retorna a linha do onibus.
+  bool get ehEntrada => ehEntradaontrol.value ?? false;
+  
+  void defineEntrada(bool value, [bool sendNotify = true]) {
+    ehEntradaontrol.value = value;
+    if (sendNotify) notify();
+  }
+
   /// Define o formulário a partir de um apontamento.
   void defineByApontamento(ConsultaPassagem value) {
     defineCodApontamento(value.codApontamento);
     defineQuantidade(value.quantidade);
     defineDataHora(value.dataHora);
     defineLinhaOnibus(value.linhaOnibus);
+    defineEntrada(value.ehEntrada);
   }
 
   /// Retorna um apontamento a partir do formulário.
   ConsultaPassagem getApontamento() {
-    return ConsultaPassagem(codApontamento, quantidade, dataHora, linhaOnibus);
+    return ConsultaPassagem(codApontamento, quantidade, dataHora, linhaOnibus, ehEntrada);
   }
 
   @override
@@ -80,5 +93,6 @@ class ConsultaPassagemController extends DefaultController {
     quantidadeControl.reset(value: 0);
     dataHoraControl.reset(value: "");
     linhaOnibusControl.reset(value: "");
+    ehEntradaontrol.reset(value: false);
   }
 }

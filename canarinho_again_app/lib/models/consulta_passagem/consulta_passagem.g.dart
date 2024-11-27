@@ -12,6 +12,7 @@ ConsultaPassagem _$ConsultaPassagemFromJson(Map<String, dynamic> json) =>
       (json['quantidade'] as num).toDouble(),
       DateTime.parse(json['dataHora'] as String),
       json['linhaOnibus'] as String,
+      json['ehEntrada'] as bool,
     );
 
 Map<String, dynamic> _$ConsultaPassagemToJson(ConsultaPassagem instance) =>
@@ -20,4 +21,5 @@ Map<String, dynamic> _$ConsultaPassagemToJson(ConsultaPassagem instance) =>
       'quantidade': instance.quantidade,
       'dataHora': instance.dataHora.toIso8601String(),
       'linhaOnibus': instance.linhaOnibus,
+      'ehEntrada': instance.ehEntrada,
     };

@@ -16,11 +16,15 @@ class ConsultaPassagem {
   @JsonKey(name: 'linhaOnibus')
   String linhaOnibus;
 
+  @JsonKey(name: 'ehEntrada')
+  bool ehEntrada;
+
   ConsultaPassagem(
     this.codApontamento,
     this.quantidade,
     this.dataHora,
     this.linhaOnibus,
+    this.ehEntrada,
   );
 
    factory ConsultaPassagem.fromJson(Map<String, dynamic> json) => _$ConsultaPassagemFromJson(json);
